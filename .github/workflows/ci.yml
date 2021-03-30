@@ -36,13 +36,13 @@ jobs:
       id: acr
       uses: ams0/acr-task-github-action@v2
       with:
-          service_principal: ${{ secrets.service_principal }}
-          service_principal_password: ${{ secrets.service_principal_password }}
-          tenant: ${{ secrets.tenant }}
-          registry: ${{ secrets.registry }}
-          repository: ${{ secrets.repository }}
+          service_principal: ${{ secrets.SERVICE_PRINCIPAL }}
+          service_principal_password: ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
+          tenant: ${{ secrets.TENANT }}
+          registry: ${{ secrets.REGISTRY }}
+          repository: ${{ secrets.REPOSITORY }}
           image: hello-image
-          git_access_token: ${{ secrets.git_access_token }}
+          git_access_token: ${{ secrets.GIT_ACCESS_TOKEN }}
           
         
       
