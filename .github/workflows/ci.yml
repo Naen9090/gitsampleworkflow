@@ -33,7 +33,7 @@ jobs:
       run: docker build . -t gitactionsacr.azurecr.io/hello-world:v1
 
     - name: Push Image to ACR
-      uses: julioarruda/pushimagetoregistry@v2
+      uses: julioarruda/pushimagetoregistry@v1
       with:
         acr-tokenname: ${{ secrets.ACR_TOKEN_NAME }}
         acr-token: ${{ secrets.ACR_TOKEN_VALUE }}
