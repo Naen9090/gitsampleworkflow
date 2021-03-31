@@ -30,19 +30,15 @@ jobs:
       run: ./gradlew build
       
     - name: Build docker image
-      run: docker build .
+      run: docker build . -t gitactionsacr.azurecr.io/hello-world:v1
 
-    - name: ACR build
-      id: acr
-      uses: ams0/acr-task-github-action@v2
+    - name: Push Image to ACR
+      uses: julioarruda/pushimagetoregistry@v1
       with:
-          service_principal: ${{ secrets.SERVICE_PRINCIPAL }}
-          service_principal_password: ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
-          tenant: ${{ secrets.TENANT }}
-          registry: ${{ secrets.REGISTRY }}
-          repository: ${{ secrets.REPOSITORY }}
-          image: hello-image
-          git_access_token: ${{ secrets.GIT_ACCESS_TOKEN }}
+        acr-tokenname: ${{ secrets.ACR_TOKEN_NAME }}
+        acr-token: ${{ secrets.ACR_TOKEN_VALUE }}
+        acr-account: gitactionsacr.azurecr.io
+        acr-imagename: gitactionsacr.azurecr.io/hello-world:v1
           
         
       
