@@ -29,13 +29,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-    - name: Build docker image
-      run: docker build . -t gitactionsacr.azurecr.io/hello-world:v1
-
-    - name: Push Image to ACR
-      uses: julioarruda/pushimagetoregistry@v1
+    - name: 'Build and push image'
+      uses: azure/docker-login@v1
       with:
-        acr-tokenname: ${{ secrets.ACR_TOKEN_NAME }}
-        acr-token: ${{ secrets.ACR_TOKEN_VALUE }}
-        acr-account: gitactionsacr.azurecr.io
-        acr-imagename: gitactionsacr.azurecr.io/hello-world:v1
+        login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
