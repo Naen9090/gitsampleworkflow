@@ -1,24 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app
-  labels:
-    app: flask
-    env: dev
+  name: sample-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask
+      app: sample
   template:
     metadata:
       labels:
-        app: flask
-        env: dev
+        app: sample
     spec:
       containers:
-      - name: flask
-        image: cloudlifeacr.azurecr.io/k8sflask
+      - name: sample
+        image: gitactionsacr.azurecr.io/sampleapp
         ports:
         - name:  http
           containerPort: 8080
