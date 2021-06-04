@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "tfakscluster-4ab9"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "tfakscluster-4ab9"
+  template:
+    metadata:
+      labels:
+        app: "tfakscluster-4ab9"
+    spec:
+      containers:
+        - name: "tfakscluster-4ab9"
+          image: "gitactionsacr.azurecr.io/tfakscluster"
+          ports:
+          - containerPort: 8080
