@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: sample
-  type:  LoadBalancer
+  type:  NodePort
   ports:
   - name:  http
     port:  80
