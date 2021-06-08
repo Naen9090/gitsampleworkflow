@@ -48,10 +48,10 @@ jobs:
         
     - uses: Azure/k8s-create-secret@v1
       with:
-        container-registry-url: cloudlifeacr.azurecr.io
+        container-registry-url: gitactionsacr.azurecr.io
         container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
         container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-        secret-name: default-token-94n2h
+        secret-name: myregistrykey
 
     - uses: Azure/k8s-deploy@v1
       with:
@@ -59,6 +59,7 @@ jobs:
           manifests/deployment.yml
           manifests/service.yml
         images: |
-          cloudlifeacr.azurecr.io/k8sflask:${{ github.sha }}
+          #gitactionsacr.azurecr.io/k8sflask:${{ github.sha }}
+          gitactionsacr.azurecr.io/sampleapp:latest
         imagepullsecrets: |
-          default-token-94n2h
+          myregistrykey
