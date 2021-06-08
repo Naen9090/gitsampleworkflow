@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sample
-        image: gitactionsacr.azurecr.io/sampleapp
+        image: gitactionsacr.azurecr.io/sampleapp:latest
         ports:
         - name:  http
           containerPort: 8080
