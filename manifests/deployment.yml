@@ -20,5 +20,5 @@ spec:
         - name:  http
           containerPort: 8080
           protocol: TCP
-    imagePullSecrets:
-    - name: default-token-94n2h
+      imagePullSecrets:
+      - name: default-token-94n2h
