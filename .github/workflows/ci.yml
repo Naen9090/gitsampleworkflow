@@ -46,13 +46,13 @@ jobs:
         cluster-name: tfakscluster
         resource-group: AKS-ELK-RG
         
-    - uses: Azure/k8s-create-secret@v1
-      with:
+#     - uses: Azure/k8s-create-secret@v1
+#       with:
 #         container-registry-url: gitactionsacr.azurecr.io
-        container-registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-        container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
-        container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-        secret-name: myregistrykey
+#         container-registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+#         container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+#         container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+#         secret-name: myregistrykey
 
     - uses: Azure/k8s-deploy@v1
       with:
@@ -62,4 +62,4 @@ jobs:
         images: |
           gitactionsacr.azurecr.io/sampleapp:latest
         imagepullsecrets: |
-          myregistrykey
+          myacrsecret
