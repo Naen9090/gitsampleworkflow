@@ -21,4 +21,4 @@ spec:
           containerPort: 8080
           protocol: TCP
       imagePullSecrets:
-      - name: myregistrykey
+      - name: myacrsecret
